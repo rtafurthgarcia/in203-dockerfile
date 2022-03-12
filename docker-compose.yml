@@ -1,0 +1,23 @@
+version: "3.9" 
+
+networks:
+  honeypot-isolation: {}
+
+services:
+  honeypot:
+    image: cowrie/cowrie
+    restart: always
+    ports:
+      - "22:2222"
+    volumes:
+      - cowrie/etc:/cowrie/cowrie-git/etc
+      - cowrie/var:/cowrie/cowrie-git/var
+    networks:
+      - honeypot-isolation
+    links:
+      - elastic
+  elastic:
+    image: elasticsearch:tag
+    restart: always
+
+
