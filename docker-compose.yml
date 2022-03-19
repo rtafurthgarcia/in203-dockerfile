@@ -18,8 +18,8 @@ services:
     ports:
       - "22:2222"
     volumes:
-      - cowrie/etc:/cowrie/cowrie-git/etc
-      - cowrie/var:/cowrie/cowrie-git/var
+      - ./cowrie/etc:/cowrie/cowrie-git/etc:rw
+      - ./cowrie/var:/cowrie/cowrie-git/var:rw
     networks:
       - honeypot-isolation
     links:
